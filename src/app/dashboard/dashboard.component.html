@@ -5,9 +5,19 @@
   <div class="header">
     <div class="profile-section">
       <i class="fa fa-user profile-icon"></i>
-      <span>{{ username ? 'Hello, ' + username : 'Welcome!' }}</span>
+      <span>{{ username ? 'Hello ' + username : 'Welcome!' }}</span>
     </div>
     <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
+
+  <!-- Success Message -->
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="error" class="error-message">
+    {{ error }}
   </div>
 
   <!-- File Upload Section -->
@@ -18,11 +28,6 @@
       <input id="csvFile" type="file" (change)="handleFileUpload($event)" formControlName="file" />
       <button type="submit" class="upload-btn" [disabled]="!fileUploadForm.valid">Upload</button>
     </form>
-  </div>
-
-  <!-- Error Message -->
-  <div *ngIf="error" class="error-message">
-    {{ error }}
   </div>
 
   <!-- Search Section -->

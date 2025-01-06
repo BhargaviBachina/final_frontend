@@ -60,11 +60,10 @@ export class ResetPasswordComponent {
     // Call the backend API to reset the password
     this.http.post('http://localhost:5000/api/v1/auth/reset-password', this.resetPasswordForm.value).subscribe({
       next: (response: any) => {
-        console.log('Password reset successful:', response);
         this.message = response.message; // Show success message
         setTimeout(() => {
           this.router.navigate(['/login']);
-        }, 3000);
+        }, 2000);
       },
       error: (err: any) => {
         if (err.error?.message === 'New password cannot be the same as the old password') {

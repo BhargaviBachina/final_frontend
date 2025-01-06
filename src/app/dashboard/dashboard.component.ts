@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   records: any[] = [];
   file: File | null = null;
   error: string | null = null;
+  successMessage: string | null = null; 
   currentPage: number = 1;
   totalPages: number = 1;
   totalRecords: number = 0;
@@ -33,6 +34,8 @@ export class DashboardComponent implements OnInit {
       file: [null, Validators.required],
     });
   }
+
+  
 
   // Method to fetch records with pagination and filtering
   fetchRecords(page: number = this.currentPage) {
@@ -64,7 +67,6 @@ export class DashboardComponent implements OnInit {
       })
       .subscribe(
         (response) => {
-          console.log('API Response:', response);
           this.records = response.data.records;
           this.currentPage = response.data.currentPage;
           this.totalPages = response.data.totalPages;
@@ -93,7 +95,7 @@ export class DashboardComponent implements OnInit {
       })
       .subscribe(
         (response) => {
-          this.username = response.username;
+          this.username = response.data.user.username;
         },
         (error) => {
           this.error = 'Failed to fetch profile data.';
@@ -126,6 +128,11 @@ export class DashboardComponent implements OnInit {
           this.sessionId = response.data.sessionId;
           this.fetchRecords();  // Fetch records after uploading the file
           this.error = null;
+          this.successMessage = 'File uploaded successfully!';
+          // Clear the success message after 3 seconds
+          setTimeout(() => {
+          this.successMessage = '';  // Clear the message
+        }, 3000);
         },
         (error) => {
           this.error = 'Failed to upload file.';
@@ -143,6 +150,7 @@ export class DashboardComponent implements OnInit {
 
   // Handle search query changes
   onSearchChange() {
+    this.currentPage = 1;
     this.fetchRecords();  // Fetch the filtered records based on search
   }
 
