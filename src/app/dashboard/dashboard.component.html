@@ -1,0 +1,82 @@
+<div class="dashboard">
+  <h2 class="dashboard-title">Dashboard</h2>
+
+  <!-- Profile Section -->
+  <div class="header">
+    <div class="profile-section">
+      <i class="fa fa-user profile-icon"></i>
+      <span>{{ username ? 'Hello, ' + username : 'Welcome!' }}</span>
+    </div>
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
+
+  <!-- File Upload Section -->
+  <div class="upload-section">
+    <h3>Upload CSV File</h3>
+    <label for="csvFile" class="upload-label">Select CSV file</label>
+    <form [formGroup]="fileUploadForm" (ngSubmit)="uploadFile()">
+      <input id="csvFile" type="file" (change)="handleFileUpload($event)" formControlName="file" />
+      <button type="submit" class="upload-btn" [disabled]="!fileUploadForm.valid">Upload</button>
+    </form>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <!-- Search Section -->
+  <div class="search-container">
+    <h3>Search Records</h3>
+    <form (ngSubmit)="onSearchChange()">
+      <label for="searchField">Select Field</label>
+      <select [(ngModel)]="searchField" name="searchField" id="searchField" class="form-control">
+        <option value="" disabled>Select a field</option>
+        <option *ngFor="let column of columns" [value]="column">{{ column }}</option>
+      </select>
+
+      <label for="searchValue">Search Value</label>
+      <input
+        type="text"
+        id="searchValue"
+        name="searchValue"
+        class="form-control"
+        [(ngModel)]="searchValue"
+        (input)="onSearchChange()"
+        placeholder="Enter search value"
+      />
+      <button type="submit" class="search-btn">Search</button>
+    </form>
+  </div>
+
+  <!-- Records Table -->
+  <h3>Records</h3>
+  <div *ngIf="records.length > 0">
+    <table class="records-table">
+      <thead>
+        <tr>
+          <th *ngFor="let column of columns">{{ column }}</th>
+          <th>Created At</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of records">
+          <td *ngFor="let column of columns">{{ record.data[column] }}</td>
+          <td>{{ record.created_at | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Message if no records found -->
+  <div *ngIf="records.length === 0">
+    <p>No records found.</p>
+  </div>
+
+  <!-- Pagination Controls -->
+  <div *ngIf="totalPages > 1" class="pagination-controls">
+    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</div>

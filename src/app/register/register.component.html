@@ -1,0 +1,125 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="p-4 border rounded shadow">
+  <h2 class="mb-4 text-center">Register</h2>
+
+  <!-- Username -->
+  <div class="form-group mb-3">
+    <label for="username" class="form-label">Username:</label>
+    <input 
+      type="text" 
+      id="username" 
+      formControlName="username" 
+      class="form-control" 
+      placeholder="Enter your username" />
+    <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" class="text-danger mt-1">
+      Username is required.
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div class="form-group mb-3">
+    <label for="email" class="form-label">Email:</label>
+    <input 
+      type="email" 
+      id="email" 
+      formControlName="email" 
+      class="form-control" 
+      placeholder="Enter your email" />
+    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-danger mt-1">
+      A valid email is required.
+    </div>
+  </div>
+
+  <!-- Password -->
+  <div class="form-group mb-3">
+    <label for="password" class="form-label">Password:</label>
+    <input 
+      type="password" 
+      id="password" 
+      formControlName="password" 
+      class="form-control" 
+      placeholder="Enter a strong password" />
+    <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-danger mt-1">
+      Password must be at least 8 characters long, include letters, numbers, and at least one special character.
+    </div>
+  </div>
+
+  <!-- Confirm Password -->
+  <div class="form-group mb-3">
+    <label for="confirmPassword" class="form-label">Confirm Password:</label>
+    <input 
+      type="password" 
+      id="confirmPassword" 
+      formControlName="confirmPassword" 
+      class="form-control" 
+      placeholder="Confirm your password" />
+    <div *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched" class="text-danger mt-1">
+      Confirm Password is required.
+    </div>
+    <div *ngIf="registerForm.get('password')?.value !== registerForm.get('confirmPassword')?.value && registerForm.get('confirmPassword')?.touched" class="text-danger mt-1">
+      Passwords do not match.
+    </div>
+  </div>
+
+  <!-- Phone Number -->
+  <div class="form-group mb-3">
+    <label for="phoneNumber" class="form-label">Phone Number:</label>
+    <input 
+      type="text" 
+      id="phoneNumber" 
+      formControlName="phoneNumber" 
+      class="form-control" 
+      placeholder="Enter your phone number" />
+    <div *ngIf="registerForm.get('phoneNumber')?.invalid && registerForm.get('phoneNumber')?.touched" class="text-danger mt-1">
+      Phone Number must be 10 digits.
+    </div>
+  </div>
+
+  <!-- Gender -->
+  <div class="form-group mb-3">
+    <label for="gender" class="form-label">Gender:</label>
+    <select 
+      id="gender" 
+      formControlName="gender" 
+      class="form-control">
+      <option value="" disabled selected>Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+    <div *ngIf="registerForm.get('gender')?.invalid && registerForm.get('gender')?.touched" class="text-danger mt-1">
+      Gender is required.
+    </div>
+  </div>
+
+  <!-- Date of Birth -->
+  <div class="form-group mb-4">
+    <label for="dob" class="form-label">Date of Birth:</label>
+    <input 
+      type="date" 
+      id="dob" 
+      formControlName="dob" 
+      class="form-control" />
+    <div *ngIf="registerForm.get('dob')?.invalid && registerForm.get('dob')?.touched" class="text-danger mt-1">
+      Date of Birth is required.
+    </div>
+  </div>
+
+  <!-- Success and Error Messages -->
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoading" class="text-center mb-3">
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    <span>Registering...</span>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" [disabled]="registerForm.invalid || isLoading" class="btn btn-primary w-100">
+    Register
+  </button>
+</form>

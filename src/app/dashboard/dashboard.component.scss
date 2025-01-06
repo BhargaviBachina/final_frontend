@@ -1,0 +1,214 @@
+/* General Styling */
+.dashboard {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+}
+
+/* Dashboard Title */
+.dashboard-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+/* Profile Section */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  background-color: #ffffff;
+  padding: 15px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.profile-icon {
+  font-size: 35px;
+  margin-right: 12px;
+  color: #007bff;
+}
+
+.logout-btn {
+  padding: 12px 25px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #e53935;
+}
+
+/* File Upload Section */
+.upload-section {
+  margin-bottom: 35px;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.upload-label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 500;
+  color: #333;
+}
+
+.upload-section input[type="file"] {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.upload-btn {
+  padding: 12px 25px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upload-btn:hover {
+  background-color: #45a049;
+}
+
+.upload-btn:disabled {
+  background-color: #b0bec5;
+  cursor: not-allowed;
+}
+
+/* Error Message */
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #f8d7da;
+  border-radius: 5px;
+}
+
+/* Search Section */
+.search-container {
+  margin-bottom: 30px;
+}
+
+.search-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-container label {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.search-container .form-control {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.search-btn {
+  padding: 12px 25px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Table Styling */
+.records-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.records-table th,
+.records-table td {
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.records-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.records-table td {
+  background-color: #ffffff;
+}
+
+.records-table tr:nth-child(even) td {
+  background-color: #f9f9f9;
+}
+
+.records-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Pagination Controls */
+.pagination-controls {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.pagination-controls button {
+  padding: 12px 25px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 15px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-controls button:hover {
+  background-color: #0056b3;
+}
+
+.pagination-controls button:disabled {
+  background-color: #b0bec5;
+  cursor: not-allowed;
+}
+
+.pagination-controls span {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
