@@ -23,9 +23,10 @@ export class DashboardComponent implements OnInit {
   sessionId: string | null = null;
   columns: string[] = [];
   username: string | null = null;
+
+  fileUploadForm: FormGroup;
   searchField: string = '';
   searchValue: string = '';
-  fileUploadForm: FormGroup;
 
   constructor(private http: HttpClient, private router: Router, private fb: FormBuilder) {
     this.fileUploadForm = this.fb.group({
@@ -36,14 +37,13 @@ export class DashboardComponent implements OnInit {
   // Method to fetch records with pagination and filtering
   fetchRecords(page: number = this.currentPage) {
     const token = localStorage.getItem('token');
-    const sessionId = localStorage.getItem('sessionId');  // Retrieve sessionId from localStorage
-
+    const sessionId = localStorage.getItem("sessionId");
     if (!token) {
       this.router.navigate(['/login']);
       return;
     }
 
-    // Ensure page is valid and within bounds
+    // Ensure page is a valid number
     page = page && page > 0 ? page : 1; 
 
     let url = `http://localhost:5000/api/v1/records/records?page=${page}&perPage=10`;
@@ -72,12 +72,6 @@ export class DashboardComponent implements OnInit {
 
           // Dynamically update the valid fields for search
           this.columns = response.data.validFields;  // Update columns to valid fields returned by backend
-
-          // If the current page exceeds total pages after uploading a new file, adjust the page to last page
-          if (this.currentPage > this.totalPages) {
-            this.currentPage = this.totalPages;
-            this.fetchRecords(this.currentPage);  // Re-fetch records for the new page
-          }
         },
         (error) => {
           this.error = 'Failed to fetch records.';
@@ -128,9 +122,9 @@ export class DashboardComponent implements OnInit {
       })
       .subscribe(
         (response) => {
-          localStorage.setItem('sessionId', response.data.sessionId);  // Store sessionId in localStorage
+          localStorage.setItem('sessionId', response.data.sessionId);
           this.sessionId = response.data.sessionId;
-          this.fetchRecords(1);  // Fetch records for the first page after upload
+          this.fetchRecords();  // Fetch records after uploading the file
           this.error = null;
         },
         (error) => {
@@ -160,7 +154,6 @@ export class DashboardComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('token');
-    localStorage.removeItem('sessionId');  // Remove sessionId on logout
     this.router.navigate(['/login']);
   }
 }
