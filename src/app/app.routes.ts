@@ -5,10 +5,12 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AuthGuard } from './auth.guard';
+import { TableUploadComponent } from './table-upload/table-upload.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: "table-upload", component:TableUploadComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
   {path:'forgot-password',component:ForgotPasswordComponent},
   { path: 'reset-password', component: ResetPasswordComponent },

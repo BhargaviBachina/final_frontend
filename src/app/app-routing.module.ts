@@ -6,11 +6,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AuthGuard } from './auth.guard';
-//import { MatTableModule } from '@angular/material/table';
-//import { MatPaginatorModule } from '@angular/material/paginator';
-//import { MatSortModule } from '@angular/material/sort';
-import  {CommonModule} from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { TableUploadComponent } from './table-upload/table-upload.component';
 
 
 const routes: Routes = [
@@ -19,6 +15,7 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  {path: 'table-upload', component: TableUploadComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },  
 ];
 
