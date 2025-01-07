@@ -61,13 +61,11 @@
       <thead>
         <tr>
           <th *ngFor="let column of columns">{{ column }}</th>
-          <th>Created At</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let record of records">
           <td *ngFor="let column of columns">{{ record.data[column] }}</td>
-          <td>{{ record.created_at | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
         </tr>
       </tbody>
     </table>
