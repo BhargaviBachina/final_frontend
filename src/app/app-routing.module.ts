@@ -7,7 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AuthGuard } from './auth.guard';
 import { TableUploadComponent } from './table-upload/table-upload.component';
-
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   {path: 'table-upload', component: TableUploadComponent, canActivate: [AuthGuard] },
+  { path: 'file-upload', component: FileUploadComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },  
 ];
 

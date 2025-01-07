@@ -22,8 +22,11 @@
 
   <!-- Welcome Section -->
   <div class="welcome-section">
-    <h3>Welcome to your Dashboard!</h3>
+    <h3>Welcome to Your Dashboard!</h3>
     <p>Click below to upload a CSV file and view the records.</p>
-    <a [routerLink]="['/table-upload']" class="go-to-upload">Table Upload</a>
+    <div class="button-group">
+      <a [routerLink]="['/table-upload']" class="go-to-upload">Table Upload</a>
+      <a [routerLink]="'/file-upload'" class="go-to-upload">Go to File Upload</a>
+    </div>
   </div>
 </div>

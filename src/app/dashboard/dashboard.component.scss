@@ -5,7 +5,7 @@
   margin: 0 auto;
   background-color: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
   font-family: 'Roboto', sans-serif;
   color: #333;
   transition: all 0.3s ease-in-out;
@@ -14,11 +14,12 @@
 
 /* Dashboard Title */
 .dashboard-title {
-  font-size: 36px;
+  font-size: 38px;
   font-weight: 700;
   color: #333;
   margin-bottom: 40px;
   text-align: center;
+  text-transform: uppercase;
 }
 
 /* Profile Section */
@@ -29,7 +30,7 @@
   margin-bottom: 35px;
   background-color: #ffffff;
   padding: 20px 30px;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
 }
@@ -95,15 +96,22 @@
 }
 
 .welcome-section h3 {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 600;
   color: #333;
+  margin-bottom: 10px;
 }
 
 .welcome-section p {
   font-size: 18px;
   color: #666;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
 }
 
 .go-to-upload {
@@ -114,9 +122,15 @@
   background-color: #3498db;
   border-radius: 6px;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s;
 }
 
 .go-to-upload:hover {
   background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+.go-to-upload:active {
+  transform: translateY(2px);
 }
